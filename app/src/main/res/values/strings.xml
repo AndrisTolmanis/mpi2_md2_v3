@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">mpi2_md2_v3</string>
+    <string name="title_activity_maps">The map</string>
+    <string name="title_activity_git_hub">The Hub of Git</string>
+    <string name="action_map">Map</string>
+    <string name="action_github">Github</string>
+</resources>
