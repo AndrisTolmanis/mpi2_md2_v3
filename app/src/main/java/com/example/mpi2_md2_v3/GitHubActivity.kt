@@ -3,10 +3,9 @@ package com.example.mpi2_md2_v3
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.ArrayAdapter
-import android.widget.Button
 import android.widget.Toast
 
 import kotlinx.android.synthetic.main.activity_git_hub.*
@@ -22,13 +21,15 @@ import java.util.*
 
 class GitHubActivity : AppCompatActivity() {
     var list: MutableList<Repository> = ArrayList()
+    private lateinit var linearLayoutManager: LinearLayoutManager
+    private lateinit var adapter: ListAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_git_hub)
+        linearLayoutManager = LinearLayoutManager(this)
+        recView.layoutManager = linearLayoutManager
         setSupportActionBar(toolbar)
-
-        val adapter = ArrayAdapter(this, R.layout.list_item, list)
 
         val service = Retrofit.Builder()
             .baseUrl("https://api.github.com/")
@@ -43,12 +44,11 @@ class GitHubActivity : AppCompatActivity() {
                         println(it)
                         list.add(it)
                     }
-                    listView.setAdapter(adapter)
+                    adapter = ListAdapter(list)
+                    recView.adapter = adapter
                 }
                 override fun onFailure(call: Call<List<Repository>>, t: Throwable) = t.printStackTrace()
             })
-
-
 
     }
 

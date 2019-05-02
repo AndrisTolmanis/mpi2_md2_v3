@@ -22,11 +22,10 @@
     </android.support.design.widget.AppBarLayout>
 
     <include layout="@layout/content_git_hub" android:id="@+id/include"/>
-    <ListView
+    <android.support.v7.widget.RecyclerView
             android:layout_width="match_parent"
-            android:layout_height="match_parent" app:layout_anchorGravity="bottom|left|right|center"
-            app:layout_anchor="@+id/include" android:id="@+id/listView"
-            android:headerDividersEnabled="false" android:footerDividersEnabled="false"
-            android:layout_marginTop="60dp"/>
+            android:layout_height="match_parent" app:layout_anchorGravity="bottom|center"
+            app:layout_anchor="@+id/include" android:id="@+id/recView" android:scrollbars="vertical"
+            android:clipToPadding="true" android:paddingTop="58dp"/>
 
 </android.support.design.widget.CoordinatorLayout>
